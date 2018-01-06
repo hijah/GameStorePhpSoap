@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forside</title>
+</head>
+<body>
+
+<h1>Alle spil</h1>
+<form action="../Controller/AlleSpil.php" method="POST">
+    Send: <input type="submit" value="Hent Alle" name="AlleKnap">
+</form>
+
+<h1>Et spil</h1>
+<form action="../Controller/EtSpil.php" method="POST">
+    ID: <input type="text" value="" name="ID" />
+    Send: <input type="submit" value="Hent et" name="EnKnap" />
+</form>
+
+<h1>Tilføj spil</h1>
+<form action="../Controller/Tilføjspil.php" method="POST">
+    Id: <input type="text" value="" name="ID" />
+    Title: <input type="text" value="" name="Title" />
+    Price: <input type="number" step="0.01" value="" name="Price" />
+    Antal på lager: <input type="number" value="" name="AntalPåLager" />
+    Send: <input type="submit" value="Tilføj spil" name="TilføjKnap" />
+</form>
+
+<h1>Slet spil</h1>
+<form action="../Controller/Sletspil.php" method="POST">
+    Id: <input type="text" value="" name="ID" />
+    Send: <input type="submit" value="Slet spil" name="SletKnap"/>
+</form>
+
+<h1>Updater spil</h1>
+<form action="../Controller/Updaterspil.php" method="POST">
+    Id: <input type="text" value="" name="ID" />
+    Title: <input type="text" value="" name="Title" />
+    Price: <input type="number" step="0.01" value="" name="Price" />
+    Antal på lager: <input type="number" value="" name="AntalPåLager" />
+    Send: <input type="submit" value="Updater spil" name="UpdaterKnap" />
+</form>
+
+
+
+
+</body>
+</html>
