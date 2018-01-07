@@ -1,28 +1,31 @@
 <?php
 
+//twig
 require_once '../vendor/autoload.php';
 Twig_Autoloader::register();
 
-$loader = new Twig_Loader_Filesystem('../View');
+$loader = new Twig_Loader_Filesystem('../View');    //the path that we use to load template
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('AlleSpil.html.twig');
+$template = $twig->loadTemplate('AlleSpil.html.twig');  //refer to 'AlleSpil.html.twig so we can get template
 
+//parameter that we take from index
 $Id = $_POST['ID'];
 $Title = $_POST['Title'];
 $Price = $_POST['Price'];
 $AntalPåLager = $_POST['AntalPåLager'];
 
-$wsdl = "http://wcfsoapservice.azurewebsites.net/Service1.svc?wsdl";
-$client = new SoapClient($wsdl);
-$parametersToSoap = array('id' => $Id, 'title' => $Title, 'Price' => $Price, 'AntalPåLager' => $AntalPåLager);
-$resultWrapped = $client->UpdateGame($parametersToSoap);
+//Client that uses UpdateGame service
+$wsdl = "http://wcfsoapservice.azurewebsites.net/Service1.svc?wsdl"; //service wsdl
+$client = new SoapClient($wsdl);    //make soapclient using the wsdl
+$parametersToSoap = array('id' => $Id, 'title' => $Title, 'Price' => $Price, 'AntalPåLager' => $AntalPåLager); //putting the parameters in that we place into service underneath
+$resultWrapped = $client->UpdateGame($parametersToSoap);    // tell the client to get the operationcontact named UpdateGame
 
 
-$resultWrapped1 = $client->GetAllGames();
+$resultWrapped1 = $client->GetAllGames();   //uses our soapclient to make another request which uses GetAllGames
 
-$result = $resultWrapped1->GetAllGamesResult->Games;
+$result = $resultWrapped1->GetAllGamesResult->Games;    //Gets result from our request so we later can print it
 
 //print_r($result);
 
